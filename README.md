@@ -1,0 +1,1 @@
+# yamada24.github.io
