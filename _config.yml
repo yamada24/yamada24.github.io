@@ -1,0 +1,5 @@
+title: My Portfolio Blog
+description: これは私のポートフォリオ兼ブログサイトです
+baseurl: "" # サブURLで運用する場合は "/repo-name"
+url: "https://username.github.io"
+theme: minima # Jekyll公式のシンプルテーマ
