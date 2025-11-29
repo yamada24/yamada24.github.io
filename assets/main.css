@@ -1,1 +1,175 @@
 
+/* =========================
+   Steampunk Theme (CSS-only)
+   ※ minima や既存の index.html/blog.html/login.html を上書き
+   ========================= */
+:root{
+  --brass:#b88a2a;
+  --brass-deep:#8c6a20;
+  --copper:#b4672d;
+  --copper-dark:#7a3f17;
+  --leather:#3f2e21;
+  --leather-deep:#2c2017;
+  --parchment:#f3ead7;
+  --ink:#1b1b1b;
+  --shadow:0 12px 28px rgba(0,0,0,.18);
+  --radius:14px;
+}
+
+/* ベース（古紙っぽい背景） */
+html,body{scroll-behavior:smooth;}
+body{
+  font-family: "Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic",Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(186,143,54,.12), transparent 70%),
+    radial-gradient(1000px 500px at 120% 10%, rgba(120,80,30,.10), transparent 60%),
+    linear-gradient(180deg, #f7f0de 0%, #efe6d0 60%, #e9dfc8 100%);
+}
+
+/* コンテナ幅調整 */
+.wrapper{max-width:1000px;padding:0 1.2rem;}
+
+/* 見出しフォルム（真鍮の帯＋ギア飾り） */
+h1,h2,h3{line-height:1.25; letter-spacing:.3px;}
+h2{
+  position:relative;
+  padding-bottom:.4rem;
+  margin-top:2rem;
+  border-bottom:3px double var(--brass);
+}
+h2::before, h2::after{
+  content:"";
+  position:absolute; bottom:-11px; width:18px; height:18px;
+  background:
+    radial-gradient(circle at 50% 50%, var(--brass) 45%, transparent 46%),
+    conic-gradient(from 0deg, var(--brass) 0 15deg, transparent 15deg 30deg, var(--brass) 30deg 45deg, transparent 45deg 60deg, var(--brass) 60deg 75deg, transparent 75deg 90deg, var(--brass) 90deg 105deg, transparent 105deg 120deg, var(--brass) 120deg 135deg, transparent 135deg 150deg, var(--brass) 150deg 165deg, transparent 165deg 180deg, var(--brass) 180deg 195deg, transparent 195deg 210deg, var(--brass) 210deg 225deg, transparent 225deg 240deg, var(--brass) 240deg 255deg, transparent 255deg 270deg, var(--brass) 270deg 285deg, transparent 285deg 300deg, var(--brass) 300deg 315deg, transparent 315deg 330deg, var(--brass) 330deg 360deg);
+  opacity:.9; filter:drop-shadow(0 1px 0 rgba(0,0,0,.25));
+  border-radius:50%;
+}
+h2::before{left:0;}
+h2::after{right:0;}
+
+/* ヘッダー（革 × 真鍮縁取り） */
+.site-header{
+  background:
+    linear-gradient(180deg, #4b3628 0%, #3f2e21 60%, #35261c 100%);
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.2);
+  border-bottom: 4px solid var(--brass-deep);
+}
+.site-title a{
+  color:#f7e9c8 !important;
+  text-shadow:0 1px 0 #000;
+  text-decoration:none;
+  letter-spacing:.6px;
+}
+.site-nav .page-link{
+  color:#f2d9a1;
+  padding:.45rem .6rem;
+  border-radius:8px;
+  transition:background .15s ease, box-shadow .2s ease;
+}
+.site-nav .page-link:hover{
+  background:rgba(184,138,42,.18);
+  box-shadow:inset 0 0 0 1px rgba(184,138,42,.5);
+}
+
+/* リンク色（銅系） */
+a{ color:var(--copper); text-decoration:none; }
+a:hover{ text-decoration:underline; }
+
+/* ボタン（鋲リベット風） */
+.btn{
+  display:inline-block; font-weight:700;
+  padding:.6rem 1.05rem;
+  border-radius:999px; text-decoration:none !important;
+  color:#fff !important; background:linear-gradient(180deg, var(--brass) 0%, #d1aa47 60%, var(--brass-deep) 100%);
+  border:1px solid var(--brass-deep);
+  box-shadow:
+    0 2px 0 rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.25);
+  position:relative;
+  transition:transform .1s ease, box-shadow .2s ease, filter .2s ease;
+}
+.btn:hover{ transform:translateY(-1px); filter:saturate(1.1); }
+.btn::before, .btn::after{
+  content:""; position:absolute; top:50%; width:6px; height:6px; border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, #fff 0 15%, #c7a54a 16% 60%, #7d6320 61%);
+  box-shadow:0 0 0 1px rgba(0,0,0,.25);
+  transform:translateY(-50%);
+}
+.btn::before{ left:8px; }
+.btn::after{ right:8px; }
+.btn.ghost{
+  background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(184,138,42,.12) 100%);
+  color:var(--brass) !important; border:1px solid var(--brass);
+}
+
+/* カード（古紙 + 真鍮枠） */
+.card-grid{
+  display:grid; gap:18px;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  margin:1rem 0 2rem;
+}
+.card{
+  background:
+    linear-gradient(180deg, #f7f0de 0%, #efe6d0 60%, #eadfc7 100%);
+  border:1px solid rgba(139,109,45,.35);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:18px 16px;
+  transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.card:hover{ transform:translateY(-2px); box-shadow:0 16px 36px rgba(0,0,0,.22); }
+.card h3{ margin:.1rem 0 .4rem; font-size:1.08rem; }
+.card p{ color:#4d402d; }
+
+/* ブログ一覧（minima の .post-list をカード化） */
+.post-list{
+  list-style:none; padding:0; margin:1rem 0 2rem;
+  display:grid; gap:18px;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+}
+.post-list > li{
+  background:
+    linear-gradient(180deg, #f6eedb 0%, #efe5cd 60%, #e8dcc2 100%);
+  border:1px solid rgba(139,109,45,.35);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:16px 16px 14px;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.post-list > li:hover{ transform:translateY(-2px); box-shadow:0 16px 36px rgba(0,0,0,.22); }
+.post-link{ font-weight:800; color:var(--copper); }
+.post-meta{ color:#6b5a3e; }
+
+/* テーブル/コード（真鍮×深色） */
+table{
+  width:100%; border-collapse:collapse; margin:1rem 0;
+  border:1px solid rgba(139,109,45,.4);
+  border-radius:10px; overflow:hidden;
+  box-shadow:var(--shadow);
+}
+th,td{ padding:.6rem .7rem; border-bottom:1px solid rgba(139,109,45,.25); }
+tr:nth-child(odd) td{ background:#f6efd9; }
+
+pre, code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Noto Sans Mono", monospace;
+}
+pre{
+  background:linear-gradient(180deg, #1f1a14 0%, #17120d 100%);
+  color:#f1e6c9;
+  border:1px solid rgba(139,109,45,.45);
+  border-radius:12px; padding:14px; overflow:auto;
+  box-shadow:inset 0 0 24px rgba(0,0,0,.35);
+}
+
+/* フッター */
+.site-footer{
+  border:none; color:#6b5a3e;
+  background:linear-gradient(180deg, #efe2c8 0%, #e7d8ba 100%);
+  box-shadow:inset 0 2px 0 rgba(139,109,45,.35);
+}
+
+/* ログイン/シークレットの既存クラス微調整（任意） */
+.btn-login{ /* 互換用 */ }
